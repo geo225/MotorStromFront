@@ -1,0 +1,11 @@
+<h2>My Cars</h2>
+<ul class="cars">
+  <li *ngFor="let car of cars"
+      [class.selected]="car === selectedCar"
+      (click)="onSelect(car)">
+    <span class="badge">{{car.Marca}}</span> {{ car.name }}
+    <span class="badge">Categoria</span> {{ car.category }}
+    <span class="badge">Descripcion</span> {{ car.description}}
+  </li>
+</ul>
+<app-car-detail [car]="selectedCar"></app-car-detail>
