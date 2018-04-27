@@ -5,19 +5,26 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
+import {CarService} from "./car.service";
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CarService,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
