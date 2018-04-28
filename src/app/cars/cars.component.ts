@@ -13,11 +13,6 @@ export class CarsComponent implements OnInit {
     this.carService.getCars()
       .subscribe(cars => this.cars = cars);
   }
-  selectedCar: Car;
-
-  onSelect(car: Car): void {
-    this.selectedCar = car;
-  }
   constructor(private carService: CarService) { }
 
   ngOnInit() {

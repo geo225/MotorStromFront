@@ -10,6 +10,11 @@ export class CarService {
     this.messageService.add('CarService: fetched Cars');
     return of(CARS);
   }
+  getCar(name: string): Observable<Car> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`CarService: fetched Car name=${name}`);
+    return of(CARS.find(car => car.name === name));
+  }
   constructor(private messageService: MessageService) { }
 
 }

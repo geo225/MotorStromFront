@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { CarService} from "../car.service";
 import { Car } from '../car';
 @Component({
   selector: 'app-car-detail',
@@ -7,8 +10,18 @@ import { Car } from '../car';
 })
 export class CarDetailComponent implements OnInit {
   @Input() car: Car;
-  constructor() { }
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private carService: CarService,
+    private location: Location
+  ) { }
+  ngOnInit(): void {
+    this.getCar();
+  }
+  getCar(): void {
+    let name = this.route.params(params._value.name;
+    this.carService.getCar(name)
+      .subscribe(car => this.car = car);
   }
 
 }
