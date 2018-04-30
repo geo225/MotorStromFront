@@ -3,5 +3,11 @@
   <div><span>Marca: </span>{{car.Marca}}</div>
   <div><span>Categoria: </span>{{car.category}}</div>
   <div><span>Descripción: </span>{{car.description}}</div>
-<button (click)="goBack()">go back</button>
+  <div><span>CV: </span>{{car.CV}}</div>
+  <div>
+    <label>CV:
+      <input [(ngModel)]="car.CV" placeholder="CV"/>
+    </label>
+  </div>
+  <button (click)="save()">save</button><button (click)="goBack()">go back</button>
 </div>

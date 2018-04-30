@@ -21,9 +21,13 @@ export class CarDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+  save(): void {
+    this.carService.updateCar(this.car)
+      .subscribe(() => this.goBack());
+  }
   getCar(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
-      .subscribe(car => this.car = car);
+      .subscribe(data => this.car = data);
   }
 }
