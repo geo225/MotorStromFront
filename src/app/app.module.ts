@@ -18,7 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CarsComponent,
     CarDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
