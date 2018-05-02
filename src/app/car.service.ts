@@ -27,7 +27,7 @@ export class CarService {
     };
   }
   getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.MotorStromURL).map(data => { return data.Cars; })
+    return this.http.get<Car>(this.MotorStromURL).map(data => { return data.Cars; })
       .pipe(
         tap(cars => this.log(`fetched Cars`)),
         catchError(this.handleError('getCar', []))
