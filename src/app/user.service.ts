@@ -21,8 +21,11 @@ export class UserService {
   }
 
   userAuthentication(email, password) {
-    var data = "email=" + email + "&password=" + password + "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+    var data = {
+      email: email,
+      password: password
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth':'True' });
     return this.http.post(this.MotorStromURL + '/signin', data, { headers: reqHeader });
   }
 
