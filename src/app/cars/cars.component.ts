@@ -1,11 +1,13 @@
-import {AfterViewInit,ViewChild, Component, OnInit} from '@angular/core';
+import {AfterViewInit,ViewChild, Component, OnInit , ViewEncapsulation} from '@angular/core';
 import { Car } from '../car';
 import { CarService} from '../car.service';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.css']
+  styleUrls: ['./cars.component.css'],
+  encapsulation : ViewEncapsulation.None
 })
 export class CarsComponent implements OnInit, AfterViewInit{
   cars: Car[];
@@ -27,7 +29,14 @@ export class CarsComponent implements OnInit, AfterViewInit{
       .subscribe(() => this.getCars()
     );
   }
-  constructor(private carService: CarService) { }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    this.dataSource.filter = filterValue;
+  }
+  rowClicked(row: any): void {
+    this.router.navigate(['/detail/'+row._id]);
+  }
+  constructor(private carService: CarService,private router : Router) { }
   ngOnInit() {
     this.carService.getCars()
       .subscribe(data => {
@@ -36,9 +45,10 @@ export class CarsComponent implements OnInit, AfterViewInit{
     this.getCars();
   }
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  @ViewChild(MatSort) sort: MatSort;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }
 

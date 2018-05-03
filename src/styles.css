@@ -61,6 +61,8 @@ div.error-message i{
   background-color: #fff !important;
 }
 html {
+  height: 100%;
+  width: 100%;
 }
 body{
   background-image: url("motorstorm-BackGround2.jpg");
