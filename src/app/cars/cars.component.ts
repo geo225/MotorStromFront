@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit,ViewChild, Component, OnInit} from '@angular/core';
 import { Car } from '../car';
 import { CarService} from '../car.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent implements OnInit, AfterViewInit{
   cars: Car[];
   getCars(): void {
     this.carService.getCars()
       .subscribe(data => this.cars = data);
   }
+  displayedColumns = ['name', 'marca', 'category', 'description', 'CV'];
+  dataSource= new MatTableDataSource();
   add(name: string, Marca: string, category: string, description: string, CV: number): void {
     name = name.trim();
     if (!name) { return; }
@@ -26,7 +29,16 @@ export class CarsComponent implements OnInit {
   }
   constructor(private carService: CarService) { }
   ngOnInit() {
+    this.carService.getCars()
+      .subscribe(data => {
+        this.dataSource.data = data;
+      });
     this.getCars();
+  }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 }
 

@@ -19,6 +19,8 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
+import {MatInputModule, MatTableModule, MatToolbarModule, MatPaginatorModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -39,7 +41,19 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
+  ],
+  exports:[
+    CommonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     CarService,
