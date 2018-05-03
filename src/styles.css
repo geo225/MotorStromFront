@@ -1,17 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 button.btn-submit{
-  background-color: #38547b;
+  background-color: black;
   color: #fff;
   width: 100%;
 }
 button.btn-submit:focus,button.btn-submit:hover{
-  background-color: #38547b;
+  background-color: grey;
 }
 
 input.ng-invalid.ng-dirty{
   border-bottom-color : #e91e63 !important;
   box-shadow: 0 1px 0 0 #e91e63 !important;
+}
+input.ng-pristine.ng-invalid.ng-touched{
+  border-bottom-color : black !important;
+  box-shadow: 0 1px 0 0 black !important;
+}
+input.ng-pristine.ng-invalid.ng-untouched{
+  border-bottom-color : black !important;
+  box-shadow: 0 1px 0 0 black !important;
+}
+input[type=text]:not(.browser-default):hover{
+  border-bottom-color : #F8BD00 !important;
+  box-shadow: 0 1px 0 0 #F8BD00 !important;
+}
+input[type=password]:not(.browser-default):hover{
+  border-bottom-color : #F8BD00 !important;
+  box-shadow: 0 1px 0 0 #F8BD00 !important;
+}
+input[type=text]:not(.browser-default):focus:not([readonly])+label{
+   color: #F8BD00;
+ }
+input[type=password]:not(.browser-default):focus:not([readonly])+label{
+  color: #F8BD00;
+}
+.input-field .prefix.active{
+  color: #F8BD00;
 }
 /*for error div i*/
 div.error-message i{
@@ -34,4 +59,20 @@ div.error-message i{
 
 .tabs .tab a.active{
   background-color: #fff !important;
+}
+html {
+}
+body{
+  background-image: url("motorstorm-BackGround2.jpg");
+  /* Full height */
+  height: 100%;
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#title{
+  margin: auto;
+  width: 40%;
 }

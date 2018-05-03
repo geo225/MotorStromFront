@@ -10,13 +10,26 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component'
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard] },
-  { path: 'detail/:name', component: CarDetailComponent,canActivate:[AuthGuard]},
-  { path: 'cars', component: CarsComponent,canActivate:[AuthGuard] },
-  {path: 'signup', component: SignUpComponent},
-  {path: 'login', component: SignInComponent}
+  { path: 'dashboard', component: HomeComponent,canActivate:[AuthGuard],
+    children: [{ path: '', component: DashboardComponent }]
+  },
+
+  { path: 'detail/:name', component: HomeComponent,canActivate:[AuthGuard],
+    children: [{ path: '', component: CarDetailComponent }]
+  },
+
+  { path: 'cars', component: HomeComponent,canActivate:[AuthGuard],
+    children: [{ path: '', component: CarsComponent }]
+  },
+  {
+    path: 'signup', component: UserComponent,
+    children: [{ path: '', component: SignUpComponent }]
+  },
+  {
+    path: 'login', component: UserComponent,
+    children: [{ path: '', component: SignInComponent }]
+  },
 ];
 
 @NgModule({

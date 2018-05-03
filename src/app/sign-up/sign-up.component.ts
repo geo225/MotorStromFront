@@ -37,7 +37,7 @@ export class SignUpComponent implements OnInit {
         if (data.hasOwnProperty('token') == true) {
           this.resetForm(form);
           localStorage.setItem('userToken',data.token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
           this.toastr.success('Usuario registrado con Exito');
         }
         else

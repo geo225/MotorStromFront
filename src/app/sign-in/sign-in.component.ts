@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   OnSubmit(userName,password){
     this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
         localStorage.setItem('userToken',data.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
         this.toastr.success('Usuario Autentificado con exito');
 
       },

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Car} from "../car";
 import { CarService} from "../car.service";
+import { ToastrService } from 'ngx-toastr'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,7 @@ import { CarService} from "../car.service";
 })
 export class DashboardComponent implements OnInit {
   cars: Car[] = []
-  constructor(private carService: CarService) { }
+  constructor(private router: Router,private carService: CarService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getCars();
@@ -17,5 +19,10 @@ export class DashboardComponent implements OnInit {
   getCars(): void {
     this.carService.getCars()
       .subscribe(cars => this.cars = cars.slice(0, 5));
+  }
+  Logout() {
+    this.toastr.success('Sesion Cerrada');
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
   }
 }
