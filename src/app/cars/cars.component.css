@@ -15,7 +15,12 @@
 
 .cdk-visually-hidden{
   display: none !important;
-}.cdk-visually-hidden{
-   display: none !important;
- }
+}
+.mat-row:hover{
+  background-color: lightgrey;
+}
+.mat-header-row{
+  background-color: black;
+  color: white;
+}
 
