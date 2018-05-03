@@ -1,0 +1,41 @@
+<div>
+  <h2>My Cars</h2>
+  <ul class="cars">
+    <li *ngFor="let car of cars">
+      <a routerLink="/detail/{{car._id}}">
+          <span class="badge">{{car.Marca}}</span> {{ car.name }}
+          <span class="badge">Categoria</span> {{ car.category }}
+          <span class="badge">Descripcion</span> {{ car.description}}
+      </a>
+      <button class="delete" title="delete Car"
+              (click)="delete(car)">x</button>
+    </li>
+  </ul>
+</div>
+<div>
+  <label>Car name:
+    <input #CarName/>
+  </label>
+  <label>Car Marca:
+    <input #CarMarca/>
+  </label>
+  <label>Car Category:
+    <input #CarCategory/>
+  </label>
+  <label>Car Description:
+    <input #CarDescription/>
+  </label>
+  <label>Car CV:
+    <input #CarCV/>
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(CarName.value,CarMarca.value,CarCategory.value,CarDescription.value,CarCV.value);
+                    CarName.value='';
+                    CarMarca.value='';
+                    CarCategory.value='';
+                    CarDescription.value='';
+                    CarCV.value=''
+  ">
+    add
+  </button>
+</div>
