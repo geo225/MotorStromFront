@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm ,FormControl, Validators} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -12,7 +12,13 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   user: User;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'El campo es Requeirdo' :
+      this.email.hasError('email') ? 'Email invalido' :
+        '';
+  }
 
   constructor(private userService: UserService, private toastr: ToastrService,private router : Router) { }
 

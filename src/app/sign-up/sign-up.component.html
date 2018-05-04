@@ -1,23 +1,38 @@
-<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
-  <div class="row">
-    <div class="input-field col s12 col m6">
-      <input class="validate" type="text" name="displayName" #UserName="ngModel" [(ngModel)]="user.displayName" required>
-      <label data-error="Required field!">Nombre de Usuario</label>
-    </div>
-    <div class="input-field col s12 col m6">
-      <input class="validate" type="password" name="password" #Password="ngModel" [(ngModel)]="user.password" minlength="3" required>
-      <label data-error='Required field! Minimum 3 characters needed'>Password</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input class="validate" type="text" name="email" #Email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern" required>
-      <label data-error="Invalid email!">Email</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Registrarse</button>
-    </div>
-  </div>
-</form>
+<!--<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">-->
+  <!--<div class="row">-->
+    <!--<div class="input-field col s12 col m6">-->
+      <!--<input class="validate" type="text" name="displayName" #UserName="ngModel" [(ngModel)]="user.displayName" required>-->
+      <!--<label data-error="Required field!">Nombre de Usuario</label>-->
+    <!--</div>-->
+    <!--<div class="input-field col s12 col m6">-->
+      <!--<input class="validate" type="password" name="password" #Password="ngModel" [(ngModel)]="user.password" minlength="3" required>-->
+      <!--<label data-error='Required field! Minimum 3 characters needed'>Password</label>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="input-field col s12">-->
+      <!--<input class="validate" type="text" name="email" #Email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern" required>-->
+      <!--<label data-error="Invalid email!">Email</label>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="input-field col s12">-->
+      <!--<button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Registrarse</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</form>-->
+<div>
+  <form class="example-container" (ngSubmit)="OnSubmit(userRegistrationForm)">
+    <h1 style="text-align: center"> Registro</h1>
+    <mat-form-field>
+      <mat-icon matPrefix>account_circle</mat-icon>
+      <input matInput ngModel name="email" placeholder="Email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-icon matPrefix>vpn_key</mat-icon>
+      <input matInput type="password" #Password placeholder="Password" required>
+    </mat-form-field>
+    <button mat-raised-button style="background-color: lightgrey" type="submit">Entrar</button>
+  </form>
+</div>

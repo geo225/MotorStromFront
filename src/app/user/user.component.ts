@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  constructor() { }
+  RedirectLogin(): void {
+    this.router.navigate(['/login']);
+  }
+  RedirectSignUp(): void {
+    this.router.navigate(['/signup']);
+  }
+  constructor(private router : Router) { }
 
   ngOnInit() {
   }

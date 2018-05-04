@@ -16,12 +16,11 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  OnSubmit(userName,password){
-    this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
+  OnSubmit(email,password){
+    this.userService.userAuthentication(email,password).subscribe((data : any)=>{
         localStorage.setItem('userToken',data.token);
         this.router.navigate(['/dashboard']);
         this.toastr.success('Usuario Autentificado con exito');
-
       },
       (err : HttpErrorResponse)=>{
       if (err.status === 403){

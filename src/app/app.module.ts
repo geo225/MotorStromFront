@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -19,8 +19,21 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
-import {MatInputModule, MatTableModule, MatToolbarModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTabsModule,
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule,
+  ErrorStateMatcher, ShowOnDirtyErrorStateMatcher
+} from '@angular/material';
 import { CommonModule } from '@angular/common';
+import {CdkTableModule} from '@angular/cdk/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -47,7 +60,13 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    CdkTableModule,
+    MatTabsModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatIconModule
   ],
   exports:[
     CommonModule,
@@ -55,7 +74,12 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    CdkTableModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     CarService,
@@ -66,7 +90,10 @@ import { CommonModule } from '@angular/common';
       useClass : AuthInterceptor,
       multi : true
     },
-    AuthGuard
+    AuthGuard,
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    FormControlDirective,
+    FormGroupDirective
   ],
   bootstrap: [AppComponent]
 })
