@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm ,FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -13,12 +13,24 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   user: User;
   email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
+  password = new FormControl('',[Validators.minLength(6), Validators.required]);
+  username = new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(10)])
+  getEmailErrorMessage() {
     return this.email.hasError('required') ? 'El campo es Requeirdo' :
       this.email.hasError('email') ? 'Email invalido' :
         '';
-  }
+  };
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'El campo es Requerido' :
+      this.password.hasError( 'minlength') ? 'El campo tiene que tener 6 caracteres como minimo' :
+        '';
+  };
+  getUsernameErrorMessage() {
+    return this.username.hasError('required') ? 'El campo es Requerido' :
+      this.username.hasError( 'minlength') ? 'El campo tiene que tener 4 caracteres como minimo' :
+        this.username.hasError( 'maxlength') ? 'El campo tiene que tener 10 caracteres como maximo' :
+        '';
+  };
 
   constructor(private userService: UserService, private toastr: ToastrService,private router : Router) { }
 
@@ -26,9 +38,7 @@ export class SignUpComponent implements OnInit {
     this.resetForm();
   }
 
-  resetForm(form?: NgForm) {
-    if (form != null)
-      form.reset();
+  resetForm() {
     this.user = {
       _id: '',
       displayName: '',
@@ -37,11 +47,17 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  OnSubmit(form: NgForm) {
-    this.userService.registerUser(form.value)
+  OnSubmit(displayName,email,password) {
+    this.user ={
+      _id: '',
+      displayName: displayName,
+      password: password,
+      email: email,
+    }
+    this.userService.registerUser(this.user)
       .subscribe((data: any) => {
         if (data.hasOwnProperty('token') == true) {
-          this.resetForm(form);
+          this.resetForm();
           localStorage.setItem('userToken',data.token);
           this.router.navigate(['/dashboard']);
           this.toastr.success('Usuario registrado con Exito');

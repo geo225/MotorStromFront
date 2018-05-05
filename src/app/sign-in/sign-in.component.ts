@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,16 @@ import { ToastrService } from 'ngx-toastr'
 export class SignInComponent implements OnInit {
   isLoginError : boolean = false;
   constructor(private userService : UserService,private router : Router, private toastr: ToastrService) { }
-
+  email = new FormControl('', [Validators.required]);
+  password = new FormControl('',[Validators.required]);
+  getEmailErrorMessage() {
+    return this.email.hasError('required') ? 'El campo es Requeirdo' :
+        '';
+  };
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'El campo es Requerido' :
+        '';
+  };
   ngOnInit() {
   }
 

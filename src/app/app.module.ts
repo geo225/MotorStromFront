@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
+import { FormsModule, FormControlDirective, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,16 +20,40 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import {
-  MatInputModule,
-  MatTableModule,
-  MatToolbarModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatTabsModule,
-  MatCardModule,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher,
+  MatAutocompleteModule,
   MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
   MatIconModule,
-  ErrorStateMatcher, ShowOnDirtyErrorStateMatcher
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -66,7 +90,32 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTooltipModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   exports:[
     CommonModule,
@@ -79,7 +128,30 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTooltipModule
   ],
   providers: [
     CarService,
@@ -93,7 +165,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AuthGuard,
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
     FormControlDirective,
-    FormGroupDirective
+    FormGroupDirective,
   ],
   bootstrap: [AppComponent]
 })

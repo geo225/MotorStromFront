@@ -2,13 +2,15 @@
   <form class="example-container" (ngSubmit)="OnSubmit(Email.value,Password.value)">
     <h1 style="text-align: center"> Login</h1>
     <mat-form-field>
-      <mat-icon matPrefix>account_circle</mat-icon>
-      <input matInput type="text" #Email placeholder="Email" required>
+      <span matPrefix><mat-icon>account_circle</mat-icon></span>
+      <input matInput type="text" #Email placeholder="Email" [formControl]="email"  required>
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-icon matPrefix>vpn_key</mat-icon>
-      <input matInput type="password" #Password placeholder="Password" required>
+      <span matPrefix><mat-icon>vpn_key</mat-icon></span>
+      <input matInput type="password" #Password placeholder="Password" [formControl]="password" required>
+      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button style="background-color: lightgrey" type="submit">Entrar</button>
+    <button mat-raised-button [disabled]="email.invalid || password.invalid"  style="background-color: lightgrey" type="submit">Entrar</button>
   </form>
 </div>
