@@ -12,12 +12,14 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   user: User;
+
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('',[Validators.minLength(6), Validators.required]);
   username = new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(10)])
   getEmailErrorMessage() {
     return this.email.hasError('required') ? 'El campo es Requeirdo' :
       this.email.hasError('email') ? 'Email invalido' :
+        this.email.value.trim()===0 ? 'Campo Vacio' :
         '';
   };
   getPasswordErrorMessage() {
@@ -29,7 +31,7 @@ export class SignUpComponent implements OnInit {
     return this.username.hasError('required') ? 'El campo es Requerido' :
       this.username.hasError( 'minlength') ? 'El campo tiene que tener 4 caracteres como minimo' :
         this.username.hasError( 'maxlength') ? 'El campo tiene que tener 10 caracteres como maximo' :
-        '';
+          '';
   };
 
   constructor(private userService: UserService, private toastr: ToastrService,private router : Router) { }
@@ -47,7 +49,7 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  OnSubmit(displayName,email,password) {
+  OnSubmit(email,password,displayName) {
     this.user ={
       _id: '',
       displayName: displayName,

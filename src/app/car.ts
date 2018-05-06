@@ -6,6 +6,7 @@ export class Car {
   Marca: string;
   CV: number;
   category: string;
-  description: string
+  description: string;
+  img: any;
 }
 
