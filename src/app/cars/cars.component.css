@@ -8,19 +8,12 @@
   overflow: auto;
   max-height: 500px;
 }
-
-.mat-header-cell.mat-sort-header-sorted {
-  color: black;
+.mat-sort-header-container{
+  color:white !important;
 }
-
-.cdk-visually-hidden{
-  display: none !important;
+.mat-header-row {
+  background-color: black;
 }
-/*.mat-row:hover{*/
-  /*background-color: lightgrey;*/
-/*}*/
-/*.mat-header-row{*/
-  /*background-color: black;*/
-  /*color: white;*/
-/*}*/
-
+.mat-row:hover{
+  background-color: lightgrey;
+}

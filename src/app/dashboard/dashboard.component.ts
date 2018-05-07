@@ -20,9 +20,4 @@ export class DashboardComponent implements OnInit {
     this.carService.getCars()
       .subscribe(cars => this.cars = cars.slice(0, 5));
   }
-  Logout() {
-    this.toastr.success('Sesion Cerrada');
-    localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
-  }
 }

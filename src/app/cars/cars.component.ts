@@ -17,13 +17,6 @@ export class CarsComponent implements OnInit, AfterViewInit{
   }
   displayedColumns = ['name', 'marca', 'category', 'description', 'CV'];
   dataSource= new MatTableDataSource();
-  add(name: string, Marca: string, category: string, description: string, CV: number): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.carService.addCar({ name, Marca, category, description, CV } as Car)
-      .subscribe(() => this.getCars()
-      );
-  }
   delete(car: Car): void {
     this.carService.deleteCar(car)
       .subscribe(() => this.getCars()

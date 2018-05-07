@@ -58,6 +58,7 @@ import {
 import { CommonModule } from '@angular/common';
 import {CdkTableModule} from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CarAddComponent } from './car-add/car-add.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SignUpComponent,
     SignInComponent,
     HomeComponent,
+    CarAddComponent,
   ],
   imports: [
     BrowserModule,

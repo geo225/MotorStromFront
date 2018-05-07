@@ -41,7 +41,7 @@ export class CarService {
       catchError(this.handleError<Car>(`getCar id=${id}`))
     );
   }
-  /** PUT: update the hero on the server */
+  /** PUT: update the car on the server */
   updateCar (car: Car): Observable<any> {
     const url = `${this.MotorStromURL}/${car._id}`;
     return this.http.put(url, car, httpOptions).pipe(
