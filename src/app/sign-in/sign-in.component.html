@@ -2,7 +2,7 @@
   <form class="example-container" (ngSubmit)="OnSubmit(Email.value,Password.value)">
     <h1 style="text-align: center"> Login</h1>
     <mat-form-field>
-      <span matPrefix><mat-icon>account_circle</mat-icon></span>
+      <span matPrefix><mat-icon>mail outline</mat-icon></span>
       <input matInput type="text" #Email placeholder="Email" [formControl]="email"  required>
       <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
     </mat-form-field>

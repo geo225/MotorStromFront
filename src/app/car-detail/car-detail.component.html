@@ -4,7 +4,7 @@
   <div><span>Categoria: </span>{{car.category}}</div>
   <div><span>Descripción: </span>{{car.description}}</div>
   <div><span>CV: </span>{{car.CV}}</div>
-  <div>   <img *ngIf="base64Image" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" /></div>
+  <div>   <img *ngIf="imagePath" [src]="imagePath" height="100px" width="100px" /></div>
   <div>
     <label>CV:
       <input [(ngModel)]="car.CV" placeholder="CV"/>

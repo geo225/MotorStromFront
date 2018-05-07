@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CarDetailComponent implements OnInit {
   @Input() car: Car;
  public base64Image: string;
+ public imagePath: any;
   constructor(
     private route: ActivatedRoute,
     private carService: CarService,
@@ -21,8 +22,9 @@ export class CarDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
-      .subscribe( data => {this.base64Image = data.img.data.data})
-    console.log(this.base64Image);
+      .subscribe( data => {this.imagePath = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+        + data.img.data);});
+
     this.getCar();
   }
   goBack(): void {
@@ -36,19 +38,5 @@ export class CarDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
       .subscribe(data => this.car = data);
-  }
-  changeListener($event): void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
-
-    myReader.onloadend = (e) => {
-      this.base64Image = myReader.result;
-      console.log(this.base64Image);
-    }
-    myReader.readAsDataURL(file);
   }
 }
