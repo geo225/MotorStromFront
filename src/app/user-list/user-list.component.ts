@@ -3,8 +3,6 @@ import { User} from '../user';
 import { UserService } from '../user.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
-import {CarService} from "../car.service";
-import {Car} from "../car";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({

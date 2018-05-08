@@ -42,6 +42,14 @@ export class CarDetailComponent implements OnInit {
         this.toastr.error('Fallo al Modificar');
       });
   }
+  delete(car: Car): void {
+    this.carService.deleteCar(car)
+      .subscribe(() => {
+        this.toastr.success('Coche Borrado');
+        this.goBack()
+        }
+      );
+  }
   getCar(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
