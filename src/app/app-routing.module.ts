@@ -9,6 +9,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component'
 import { CarAddComponent } from './car-add/car-add.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   { path: 'cars', component: HomeComponent,canActivate:[AuthGuard],
     children: [{ path: '', component: CarsComponent }]
+  },
+  { path: 'users', component: HomeComponent,canActivate:[AuthGuard],
+    children: [{ path: '', component: UserListComponent }]
   },
   {
     path: 'signup', component: UserComponent,
