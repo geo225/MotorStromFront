@@ -2,6 +2,7 @@
   <label>Filtro</label>
   <input matInput (keyup)="applyFilter($event.target.value)">
 </mat-form-field>
+<a mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" routerLink='/Newcar' routerLinkActive='active'>Nuevo</a>
 <mat-table matSort matSortActive="name" matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource" >
 
     <ng-container matColumnDef="name">

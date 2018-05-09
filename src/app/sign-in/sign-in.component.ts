@@ -29,6 +29,9 @@ export class SignInComponent implements OnInit {
   OnSubmit(email,password){
     this.userService.userAuthentication(email,password).subscribe((data : any)=>{
         localStorage.setItem('userToken',data.token);
+        localStorage.setItem('user_id',data.user._id);
+        localStorage.setItem('user_email',data.user.email);
+        localStorage.setItem('user_username',data.user.displayName);
         this.router.navigate(['/dashboard']);
         this.toastr.success('Usuario Autentificado con exito');
       },

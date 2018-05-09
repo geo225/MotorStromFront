@@ -21,10 +21,9 @@ export class DashboardComponent implements OnInit {
   getCars(): void {
     this.carService.getCars()
       .subscribe(cars => {
-        this.cars = cars.slice(0, 5)
+        this.cars = cars.slice(0, 4)
       });
   }
-
   getImg(path){
     return this.domSanitizer.bypassSecurityTrustResourceUrl('data:'+path.filetype+';base64,'
       + path.data);

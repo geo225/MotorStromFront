@@ -17,3 +17,7 @@
 .mat-row:hover{
   background-color: lightgrey;
 }
+.mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+  background-color: black;
+}
+

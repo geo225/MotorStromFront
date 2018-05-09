@@ -11,16 +11,20 @@ div.error-message i{
 html {
   height: 100%;
   width: 100%;
-}
-body{
   background-image: url("motorstorm-BackGround2.jpg");
-  /* Full height */
-  height: 100%;
-  width: 100%;
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+body{
+
+  /* Full height */
+  height: 95%;
+  width: 100%;
+  margin: 0px;
+  margin-top: 8px;
+  /* Center and scale the image nicely */
+
 }
 #title{
   margin: auto;

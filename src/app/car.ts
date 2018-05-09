@@ -8,5 +8,7 @@ export class Car {
   category: string;
   description: string;
   img: any;
+  userId: string;
+  userEmail: string;
 }
 

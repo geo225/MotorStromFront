@@ -55,7 +55,9 @@ export class CarAddComponent implements OnInit {
       description:'',
       img:'',
       Car:'',
-      Cars:''
+      Cars:'',
+      userId:'',
+      userEmail:''
     }
   }
 
@@ -86,11 +88,13 @@ export class CarAddComponent implements OnInit {
   add(name: string, Marca: string, category: string, description: string, CV: number): void {
     console.log(this.avatar)
     const img = this.avatar;
+    const userId = localStorage.getItem('user_id');
+    const userEmail = localStorage.getItem('user_email');
     name = name.trim();
     if (!name) {
       return;
     }
-    this.carService.addCar({name, Marca, category, description, CV,img} as Car)
+    this.carService.addCar({name, Marca, category, description, CV,img,userId,userEmail} as Car)
       .subscribe(() => {
         this.goBack();
           this.toastr.success('Coche añadido con Exito');

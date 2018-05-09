@@ -11,7 +11,10 @@ div.mat-tab-links{
 mat-tab-link{
   width: 100%;
 }
-
+mat-card{
+  max-height: 530px;
+  overflow-y: auto;
+}
 .mat-toolbar{
   display: table;
   width: 100%;

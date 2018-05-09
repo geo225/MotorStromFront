@@ -11,6 +11,10 @@ div.mat-tab-links{
 mat-tab-link{
   width: 100%;
 }
+mat-card{
+  max-height: 530px;
+  overflow-y: auto;
+}
 /*.container-fluid{*/
   /*width: 80%;*/
   /*margin: auto;*/

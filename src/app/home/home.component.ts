@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
   Logout() {
     this.toastr.success('Sesion Cerrada');
     localStorage.removeItem('userToken');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_username');
+    localStorage.removeItem('user_email');
     this.router.navigate(['/login']);
 
   }
