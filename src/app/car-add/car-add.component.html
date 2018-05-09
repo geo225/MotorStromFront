@@ -30,7 +30,6 @@
       <ng2-file-input [extensions]="['jpg','png']" [browse-text]="'Buscar'" [drop-text]="'Arrastre una imagen JPG o PNG'" [invalid-file-text]="'Formato invalido'"
                       (onAdded)="onFileChange($event)" (onRemoved)="resetAvatar()"
       ></ng2-file-input>
-
       <button [disabled]="name.invalid || marca.invalid || categoryControl.invalid || description.invalid || cv.invalid" mat-raised-button
             style="background-color: lightgrey; height: 40px;" type="submit">Añadir
     </button>

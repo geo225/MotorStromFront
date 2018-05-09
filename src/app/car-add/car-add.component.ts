@@ -91,7 +91,13 @@ export class CarAddComponent implements OnInit {
       return;
     }
     this.carService.addCar({name, Marca, category, description, CV,img} as Car)
-      .subscribe(() => this.resetForm()
+      .subscribe(() => {
+        this.goBack();
+          this.toastr.success('Coche añadido con Exito');
+      },
+        error => {
+          this.toastr.error('Error al añadir Coche');
+        }
       );
   }
 }
