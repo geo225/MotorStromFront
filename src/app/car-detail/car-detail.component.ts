@@ -15,6 +15,7 @@ export class CarDetailComponent implements OnInit {
   @Input() car: Car;
  public base64Image: string;
  public imagePath: any;
+ public modeEdit = false;
   constructor(
     private route: ActivatedRoute,
     private carService: CarService,
@@ -54,5 +55,23 @@ export class CarDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
       .subscribe(data => this.car = data);
+  }
+  owner(id){
+    if(id==localStorage.getItem('user_id')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  edit(){
+    this.toastr.warning('Modo Edición');
+    this.modeEdit = true;
+  }
+  cancel(){
+    this.modeEdit = false;
+    this.toastr.warning('Modificacion Cancelada');
+    this.getCar();
+
   }
 }

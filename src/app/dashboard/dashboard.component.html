@@ -2,9 +2,15 @@
   <p class="script"><span>MotorStrom</span></p>
   <p class="shadow text2">OFERTAS</p>
 </div>
-<a *ngFor="let car of cars" class="col-1-4"
-   routerLink="/detail/{{car._id}}">
-  <div class="module">
-    <img *ngIf="car.img !== undefined " [src]="getImg(car.img)"  />
+<div class="plate">
+  <div *ngFor="let car of cars" class="img">
+
+      <mat-card class="module">
+        <mat-card-title>{{car.Marca}}</mat-card-title>
+        <mat-card-subtitle>{{car.name}}</mat-card-subtitle>
+        <a routerLink="/detail/{{car._id}}">
+        <img *ngIf="car.img !== undefined " [src]="getImg(car.img)"/>
+        </a>
+      </mat-card>
   </div>
-</a>
+</div>

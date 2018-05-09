@@ -1,0 +1,20 @@
+mat-card{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+mat-card > * {
+  max-width: 560px;
+  width: 60%;
+  margin: auto;
+  margin-top: 6px;
+  text-align: center;
+}
+.mat-card-title, .mat-card-subtitle {
+  width: 100%;
+  text-transform: capitalize;
+  font-size: 4em;
+}
+.mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+  background-color: black;
+}
