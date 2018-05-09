@@ -60,6 +60,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarAddComponent } from './car-add/car-add.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { TrimValueAccessorModule } from 'ng-trim-value-accessor';
+import { Ng2FileInputModule } from 'ng2-file-input';
 
 
 @NgModule({
@@ -120,6 +122,8 @@ import { UserListComponent } from './user-list/user-list.component';
     MatTooltipModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    TrimValueAccessorModule,
+    Ng2FileInputModule.forRoot()
   ],
   exports:[
     CommonModule,
@@ -155,7 +159,8 @@ import { UserListComponent } from './user-list/user-list.component';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatStepperModule,
-    MatTooltipModule
+    MatTooltipModule,
+    TrimValueAccessorModule
   ],
   providers: [
     CarService,

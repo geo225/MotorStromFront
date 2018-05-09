@@ -1,5 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~ngx-toastr/toastr.css";
+@import '~ng2-file-input/ng2-file-input.css';
 /* You can add global styles to this file, and also import other style files */
 
 /*for error div i*/
