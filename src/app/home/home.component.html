@@ -1,26 +1,31 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">
-      <i class="material-icons">cloud</i>Dotnet Mob App</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li>
-        <a (click)="Logout()">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<div class="row" *ngIf="userClaims">
-  <div class="col s12 m7">
-    <div class="card">
-      <div class="card-content">
-        <span>Username :{{userClaims.UserName}}</span>
-        <br>
-        <span>Email : {{userClaims.Email}}</span>
-        <br>
-        <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
-        <br>
-        <span>Logged On : {{userClaims.LoggedOn}}</span>
-      </div>
+<div fxLayout="column" fxFlex="80" style="margin: auto;">
+  <div class="container" fxFlex="100">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <a>
+          <img src="favicon.ico" width="32px" height="32px"> MotorStrom
+        </a>
+        <a mat-button style="text-align: center; width: 40px" (click)="Logout()">Salir</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="container" fxFlex="100">
+      <nav mat-tab-nav-bar>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div>
+            <a mat-tab-link routerLink='/dashboard' routerLinkActive='active'>Inicio</a>
+          </div>
+          <div>
+            <a mat-tab-link routerLink='/cars' routerLinkActive='active'>Coches</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container" fxFlex="100">
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
     </div>
   </div>
 </div>
+

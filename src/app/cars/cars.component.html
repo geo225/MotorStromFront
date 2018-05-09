@@ -1,41 +1,64 @@
-<div>
-  <h2>My Cars</h2>
-  <ul class="cars">
-    <li *ngFor="let car of cars">
-      <a routerLink="/detail/{{car._id}}">
-          <span class="badge">{{car.Marca}}</span> {{ car.name }}
-          <span class="badge">Categoria</span> {{ car.category }}
-          <span class="badge">Descripcion</span> {{ car.description}}
-      </a>
-      <button class="delete" title="delete Car"
-              (click)="delete(car)">x</button>
-    </li>
-  </ul>
-</div>
-<div>
-  <label>Car name:
-    <input #CarName/>
-  </label>
-  <label>Car Marca:
-    <input #CarMarca/>
-  </label>
-  <label>Car Category:
-    <input #CarCategory/>
-  </label>
-  <label>Car Description:
-    <input #CarDescription/>
-  </label>
-  <label>Car CV:
-    <input #CarCV/>
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(CarName.value,CarMarca.value,CarCategory.value,CarDescription.value,CarCV.value);
-                    CarName.value='';
-                    CarMarca.value='';
-                    CarCategory.value='';
-                    CarDescription.value='';
-                    CarCV.value=''
-  ">
-    add
-  </button>
-</div>
+<mat-form-field>
+  <label>Filtro</label>
+  <input matInput (keyup)="applyFilter($event.target.value)">
+</mat-form-field>
+<a mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" routerLink='/Newcar' routerLinkActive='active'>Nuevo</a>
+<mat-table matSort matSortActive="name" matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource" >
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="marca">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="Marca"> Marca </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.Marca}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="category"> Categoria </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.category}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="description"> Año </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.description}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CV">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="CV"> CV </mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.CV}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row ; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="5" [pageSize]="5">
+  </mat-paginator>
+
+
+  <!--<label>Car name:-->
+    <!--<input #CarName/>-->
+  <!--</label>-->
+  <!--<label>Car Marca:-->
+    <!--<input #CarMarca/>-->
+  <!--</label>-->
+  <!--<label>Car Category:-->
+    <!--<input #CarCategory/>-->
+  <!--</label>-->
+  <!--<label>Car Description:-->
+    <!--<input #CarDescription/>-->
+  <!--</label>-->
+  <!--<label>Car CV:-->
+    <!--<input #CarCV/>-->
+  <!--</label>-->
+  <!--&lt;!&ndash; (click) passes input value to add() and then clears the input &ndash;&gt;-->
+  <!--<button (click)="add(CarName.value,CarMarca.value,CarCategory.value,CarDescription.value,CarCV.value);-->
+                    <!--CarName.value='';-->
+                    <!--CarMarca.value='';-->
+                    <!--CarCategory.value='';-->
+                    <!--CarDescription.value='';-->
+                    <!--CarCV.value=''-->
+  <!--">-->
+    <!--add-->
+  <!--</button>-->
+<!--</div>-->
