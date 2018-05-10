@@ -18,3 +18,7 @@ mat-card > * {
 .mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
   background-color: black;
 }
+mat-card-content > * {
+  width: 100%;
+  margin-top: 8px;
+}

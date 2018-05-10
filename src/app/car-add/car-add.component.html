@@ -25,7 +25,7 @@
       <mat-error *ngIf="description.invalid">{{getDescriptionErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" min="0" name="cv" placeholder="Caballos Coche" #CV [formControl]="cv" required>
+      <input matInput type="number" min="0" placeholder="Caballos Coche" #CV [formControl]="cv" required>
       <mat-error *ngIf="cv.invalid">{{getCVErrorMessage()}}</mat-error>
     </mat-form-field>
       <ng2-file-input [extensions]="['jpg','png']" [browse-text]="'Buscar'" [drop-text]="'Arrastre una imagen JPG o PNG'" [invalid-file-text]="'Formato invalido'"

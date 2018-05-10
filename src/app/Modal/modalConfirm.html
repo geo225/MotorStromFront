@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confimacion</h2>
+<mat-dialog-content>
+  <p>¿Estás seguro de borrar este coche?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button style="background-color: greenyellow;" mat-dialog-close>Si</button>
+  <button mat-button style="background-color: red" [mat-dialog-close]="true" cdkFocusInitial>No</button>
+</mat-dialog-actions>

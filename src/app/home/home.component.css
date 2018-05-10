@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Faster+One');
+.Logo{
+  font-family: 'Faster One', cursive;
+  font-size: 32px;
+}
 .mat-tab-nav-bar {
   display: table;
   width: 100%;
@@ -8,8 +13,9 @@ div.mat-tab-links{
   width: 100% !important;
   background-color: yellow;
 }
-mat-tab-link{
-  width: 100%;
+a.mat-tab-link{
+  width: 49%;
+  margin: auto;
 }
 mat-card{
   max-height: 700px;

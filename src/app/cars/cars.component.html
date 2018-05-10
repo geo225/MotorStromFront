@@ -1,6 +1,6 @@
 <div style="width: 100%; min-width: 600px; overflow-x: auto">
   <mat-form-field>
-    <label>Filtro</label>
+    <label>Buscador</label>
     <input matInput (keyup)="applyFilter($event.target.value)">
   </mat-form-field>
   <a mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" routerLink='/Newcar'
@@ -8,7 +8,7 @@
   <mat-table matSort matSortActive matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource">
     <ng-container matColumnDef="img">
       <mat-header-cell *matHeaderCellDef> Img</mat-header-cell>
-      <mat-cell *matCellDef="let car"><img *ngIf="car.img !== undefined " height="100px" width="120px"
+      <mat-cell *matCellDef="let car"><img *ngIf="car.img !== undefined " height="auto" width="120px"
                                            [src]="getImg(car.img)"/></mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">

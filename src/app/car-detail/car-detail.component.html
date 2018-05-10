@@ -1,43 +1,60 @@
-<div style="width: 100%;min-width: 600px;margin: auto">
+<div style="width: 100%;min-width: 400px; max-width: 600px; max-height: 600px; margin: auto">
   <button mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" (click)="goBack()">
     Atras
   </button>
   <mat-card *ngIf="car">
     <mat-card-title>{{car.Marca}}</mat-card-title>
     <mat-card-subtitle>{{car.name}}</mat-card-subtitle>
-    <img *ngIf="imagePath" [src]="imagePath" height="300px" width="450px"/>
+    <img *ngIf="imagePath" [src]="imagePath" height="auto" width="450px"/>
     <mat-card-content>
-      <div *ngIf="modeEdit"><span class="title">Nombre: </span>
-        <input [(ngModel)]="car.name" placeholder="car.name" required>
-      </div>
-      <div *ngIf="modeEdit"><span class="title">Marca: </span>
-        <input [(ngModel)]="car.Marca" placeholder="car.Marca" required>
-      </div>
-      <div>
+      <!--<ng2-file-input *ngIf="modeEdit" [extensions]="['jpg','png']" [browse-text]="'Buscar'" [drop-text]="'Arrastre una imagen JPG o PNG'" [invalid-file-text]="'Formato invalido'"-->
+                      <!--(onAdded)="onFileChange($event)" (onRemoved)="resetAvatar()"-->
+      <!--&gt;</ng2-file-input>-->
+      <mat-form-field *ngIf="modeEdit">
+      <input matInput name="name" placeholder="Modelo Coche" #Name [formControl]="name" [(ngModel)]="car.name" required>
+      <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="modeEdit">
+      <input matInput name="marca" placeholder="Marca Coche" #Marca [formControl]="marca" [(ngModel)]="car.Marca" required>
+      <mat-error *ngIf="marca.invalid">{{getMarcaErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div *ngIf="!modeEdit">
         <span class="title">Categoria: </span>
         <span class="content">{{car.category}}</span>
-
       </div>
-      <div>
+      <mat-form-field *ngIf="modeEdit">
+      <mat-select placeholder="Tipo de coche" [formControl]="categoryControl" [(ngModel)]="car.category" required>
+      <mat-option>--</mat-option>
+      <mat-option value="Diesel">Diesel</mat-option>
+      <mat-option value="Gasolina">Gasolina</mat-option>
+      </mat-select>
+        <mat-error *ngIf="categoryControl.hasError('required')">Escoge un tipo</mat-error>
+        </mat-form-field>
+      <div *ngIf="!modeEdit">
         <span class="title">Año: </span>
-        <span *ngIf="!modeEdit" class="content">{{car.description}}</span>
-        <input *ngIf="modeEdit" type="number" min="1900" max="2020" [(ngModel)]="car.description"
-               placeholder="car.description" required>
+        <span  class="content">{{car.description}}</span>
       </div>
-      <div>
+      <mat-form-field *ngIf="modeEdit">
+      <input matInput type="number" min="1900" max="2020" name="year" placeholder="Año del coche" #Description
+      [formControl]="description" [(ngModel)]="car.description" required>
+      <mat-error *ngIf="description.invalid">{{getDescriptionErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div *ngIf="!modeEdit">
         <span class="title">CV: </span>
-        <span *ngIf="!modeEdit" class="content">{{car.CV}}</span>
-        <input *ngIf="modeEdit" type="number" min="0" [(ngModel)]="car.CV" placeholder="car.CV" required>
+        <span class="content">{{car.CV}}</span>
       </div>
+      <mat-form-field *ngIf="modeEdit">
+      <input matInput type="number" min="0" placeholder="Caballos Coche" #CV [formControl]="cv" required [(ngModel)]="car.CV">
+      <mat-error *ngIf="cv.invalid">{{getCVErrorMessage()}}</mat-error>
+      </mat-form-field>
       <div>
         <span class="title">Contacto: </span>
         <span class="content">{{car.userEmail}}</span>
-
       </div>
     </mat-card-content>
     <mat-card-actions *ngIf="owner(car.userId)">
       <button mat-button *ngIf="!modeEdit" (click)="edit()">Editar</button>
-      <button *ngIf="modeEdit" mat-button (click)="save()">Guardar</button>
+      <button [disabled]="name.invalid || marca.invalid || categoryControl.invalid || description.invalid || cv.invalid" *ngIf="modeEdit" mat-button (click)="save()">Guardar</button>
       <button *ngIf="modeEdit" mat-button (click)="cancel()">Cancelar</button>
     </mat-card-actions>
     <!--<label>CV:-->
