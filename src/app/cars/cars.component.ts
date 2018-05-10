@@ -3,6 +3,7 @@ import { Car } from '../car';
 import { CarService} from '../car.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -15,7 +16,7 @@ export class CarsComponent implements OnInit, AfterViewInit{
     this.carService.getCars()
       .subscribe(data => this.cars = data);
   }
-  displayedColumns = ['name', 'marca', 'category', 'description', 'CV'];
+  displayedColumns = ['img','name', 'marca', 'category', 'description', 'CV','userId'];
   dataSource= new MatTableDataSource();
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -24,7 +25,19 @@ export class CarsComponent implements OnInit, AfterViewInit{
   rowClicked(row: any): void {
     this.router.navigate(['/detail/'+row._id]);
   }
-  constructor(private carService: CarService,private router : Router) { }
+  getImg(path){
+    return this.domSanitizer.bypassSecurityTrustResourceUrl('data:'+path.filetype+';base64,'
+      + path.data);
+  }
+  owner(id){
+    if(id==localStorage.getItem('user_id')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  constructor(public domSanitizer: DomSanitizer,private carService: CarService,private router : Router) { }
   ngOnInit() {
     this.carService.getCars()
       .subscribe(data => {

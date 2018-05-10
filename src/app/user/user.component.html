@@ -1,24 +1,25 @@
-<h1 style="text-align: center">
-  <img id="title" src="assets/img/motorStromTitle.png" alt="Logo MotorStrom" height="100px">
-</h1>
-<div fxLayout="column" fxFlex="80" style="margin: auto;">
-  <div class="container" fxFlex="100">
-    <nav mat-tab-nav-bar>
-      <div fxLayout="row" fxLayoutAlign="space-evenly center">
-        <div>
-          <a mat-tab-link routerLink='/login' routerLinkActive='active'>Login</a>
+<div class="window">
+  <h1 style="text-align: center">
+    <img id="title" src="assets/img/motorStromTitle.png" alt="Logo MotorStrom" height="100px">
+  </h1>
+  <div fxLayout="column" fxFlex="80" style="margin: auto;">
+    <div class="container" fxFlex="100">
+      <nav mat-tab-nav-bar>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div>
+            <a mat-raised-button mat-tab-link routerLink='/login' routerLinkActive='active'>Login</a>
+          </div>
+          <div>
+            <a mat-raised-button mat-tab-link routerLink='/signup' routerLinkActive='active'>Registro</a>
+          </div>
         </div>
-        <div>
-          <a mat-tab-link routerLink='/signup' routerLinkActive='active'>Registro</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="container" fxFlex="100">
-    <mat-card>
-      <router-outlet></router-outlet>
-    </mat-card>
+      </nav>
+    </div>
+    <div class="container" fxFlex="100">
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
   </div>
 </div>
-
 

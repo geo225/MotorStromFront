@@ -1,9 +1,9 @@
-<div fxLayout="column" fxFlex="80" style="margin: auto;">
+<div class="window" fxLayout="column" >
   <div class="container" fxFlex="100">
     <mat-toolbar>
       <mat-toolbar-row>
-        <a>
-          <img src="favicon.ico" width="32px" height="32px"> MotorStrom
+        <a class="Logo">
+           Motor<img src="favicon.ico" width="32px" height="32px">Strom
         </a>
         <a mat-button style="text-align: center; width: 40px" (click)="Logout()">Salir</a>
       </mat-toolbar-row>
@@ -11,14 +11,9 @@
 
     <div class="container" fxFlex="100">
       <nav mat-tab-nav-bar>
-        <div fxLayout="row" fxLayoutAlign="space-evenly center">
-          <div>
-            <a mat-tab-link routerLink='/dashboard' routerLinkActive='active'>Inicio</a>
-          </div>
-          <div>
-            <a mat-tab-link routerLink='/cars' routerLinkActive='active'>Coches</a>
-          </div>
-        </div>
+          <a mat-tab-link  routerLink='/dashboard' routerLinkActive='active'>Ofertas</a>
+          <a mat-tab-link  routerLink='/cars' routerLinkActive='active'>Coches</a>
+          <!--<a mat-raised-button mat-tab-link ><mat-tab label="Coches"></mat-tab></a>-->
       </nav>
     </div>
     <div class="container" fxFlex="100">

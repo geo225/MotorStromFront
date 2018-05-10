@@ -1,8 +1,8 @@
-<div>
+<div style="max-width: 820px; margin: 8px auto">
   <button mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" (click)="goBack()">Atras</button>
   <form class="example-container"
         (ngSubmit)="add(Name.value,Marca.value,categoryControl.value,description.value,CV.value)">
-    <h1 style="text-align: center"> Agregar Coche</h1>
+    <h1 class="shadow" style="text-align: center"> Añadir Coche</h1>
     <mat-form-field>
       <input matInput name="name" placeholder="Modelo Coche" #Name [formControl]="name" required>
       <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
@@ -25,7 +25,7 @@
       <mat-error *ngIf="description.invalid">{{getDescriptionErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" min="0" name="cv" placeholder="Caballos Coche" #CV [formControl]="cv" required>
+      <input matInput type="number" min="0" placeholder="Caballos Coche" #CV [formControl]="cv" required>
       <mat-error *ngIf="cv.invalid">{{getCVErrorMessage()}}</mat-error>
     </mat-form-field>
       <ng2-file-input [extensions]="['jpg','png']" [browse-text]="'Buscar'" [drop-text]="'Arrastre una imagen JPG o PNG'" [invalid-file-text]="'Formato invalido'"

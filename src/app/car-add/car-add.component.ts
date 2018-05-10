@@ -14,8 +14,8 @@ export class CarAddComponent implements OnInit {
   car: Car;
   name = new FormControl('', [Validators.required]);
   marca = new FormControl('', [Validators.required]);
-  description = new FormControl('', [Validators.required]);
-  cv = new FormControl('', [Validators.required]);
+  description = new FormControl('', [Validators.min(1900),Validators.max(2018),Validators.required]);
+  cv = new FormControl('', [Validators.min(0),Validators.max(2000), Validators.required]);
   categoryControl = new FormControl('', [Validators.required]);
   avatar:any;
 
@@ -30,11 +30,15 @@ export class CarAddComponent implements OnInit {
   };
   getDescriptionErrorMessage(){
     return this.description.hasError('required') ? 'El campo es Requerido':
+      this.description.hasError('min') ? 'Tiene que ser superior a 1900' :
+        this.description.hasError('max') ? 'Tiene que ser inferior al año actual' :
       '';
   }
   getCVErrorMessage(){
-    return this.cv.hasError('required') ? 'El campo es Requerido':
-      '';
+    return this.cv.hasError('required') ? 'El campo es Requerido' :
+      this.cv.hasError('min') ? 'Tiene que ser superior a 0' :
+        this.cv.hasError('max') ? 'Tiene que ser inferior a 2000' :
+        '';
   }
   constructor(private carService: CarService,
               private router: Router,
