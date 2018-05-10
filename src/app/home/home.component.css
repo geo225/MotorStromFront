@@ -25,3 +25,23 @@ mat-card{
 .mat-toolbar-row>a{
   width: 100% ;
 }
+.window{
+  margin: 8px auto;
+  width: 80%;
+}
+@media only screen and (max-height: 700px) {
+  .window{
+    max-width: 1300px;
+    max-height: 600px;
+    margin: 8px auto;
+    overflow-y: auto;
+  }
+}
+@media only screen and (max-height: 360px) {
+  .window{
+    max-width: 1300px;
+    max-height: 340px;
+    margin: 8px auto;
+    overflow-y: auto;
+  }
+}

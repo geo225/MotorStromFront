@@ -1,6 +1,6 @@
 <div>
   <form class="example-container"  (ngSubmit)="OnSubmit(Email.value,Password.value,Username.value)">
-    <h1 style="text-align: center"> Registro</h1>
+    <h1 class="shadow" style="text-align: center"> Registro</h1>
     <mat-form-field>
       <span matPrefix><mat-icon >account_circle</mat-icon></span>
       <input matInput name="username" placeholder="Nombre Usuario" #Username [formControl]="username" required>

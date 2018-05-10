@@ -1,69 +1,48 @@
-<mat-form-field>
-  <label>Filtro</label>
-  <input matInput (keyup)="applyFilter($event.target.value)">
-</mat-form-field>
-<a mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" routerLink='/Newcar' routerLinkActive='active'>Nuevo</a>
-<mat-table matSort matSortActive matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource" >
-  <ng-container matColumnDef="img">
-    <mat-header-cell *matHeaderCellDef> Img </mat-header-cell>
-    <mat-cell *matCellDef="let car"> <img *ngIf="car.img !== undefined " height="100px" width="120px" [src]="getImg(car.img)"/> </mat-cell>
-  </ng-container>
+<div style="width: 100%; min-width: 600px; overflow-x: auto">
+  <mat-form-field>
+    <label>Filtro</label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+  </mat-form-field>
+  <a mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" routerLink='/Newcar'
+     routerLinkActive='active'>Nuevo</a>
+  <mat-table matSort matSortActive matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource">
+    <ng-container matColumnDef="img">
+      <mat-header-cell *matHeaderCellDef> Img</mat-header-cell>
+      <mat-cell *matCellDef="let car"><img *ngIf="car.img !== undefined " height="100px" width="120px"
+                                           [src]="getImg(car.img)"/></mat-cell>
+    </ng-container>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Nombre </mat-header-cell>
-      <mat-cell *matCellDef="let car"> {{car.name}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="marca">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="Marca"> Marca </mat-header-cell>
-      <mat-cell *matCellDef="let car"> {{car.Marca}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="Marca"> Marca</mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.Marca}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="category"> Categoria </mat-header-cell>
-      <mat-cell *matCellDef="let car"> {{car.category}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="category"> Categoria</mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.category}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="description"> Año </mat-header-cell>
-      <mat-cell *matCellDef="let car"> {{car.description}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="description"> Año</mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.description}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="CV">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="CV"> CV </mat-header-cell>
-      <mat-cell *matCellDef="let car"> {{car.CV}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="CV"> CV</mat-header-cell>
+      <mat-cell *matCellDef="let car"> {{car.CV}}</mat-cell>
     </ng-container>
-  <ng-container matColumnDef="userId">
-    <mat-header-cell *matHeaderCellDef style="color: white"> Propietario </mat-header-cell>
-    <mat-cell *matCellDef="let car"><span *ngIf="owner(car.userId)"><mat-icon>assignment_ind</mat-icon></span></mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="userId">
+      <mat-header-cell *matHeaderCellDef style="color: white"> Propietario</mat-header-cell>
+      <mat-cell *matCellDef="let car"><span *ngIf="owner(car.userId)"><mat-icon>assignment_ind</mat-icon></span>
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row ; columns: displayedColumns;" (click) = "rowClicked(row)"></mat-row>
+    <mat-row *matRowDef="let row ; columns: displayedColumns;" (click)="rowClicked(row)"></mat-row>
   </mat-table>
   <mat-paginator [length]="4" [pageSize]="4">
   </mat-paginator>
-  <!--<label>Car name:-->
-    <!--<input #CarName/>-->
-  <!--</label>-->
-  <!--<label>Car Marca:-->
-    <!--<input #CarMarca/>-->
-  <!--</label>-->
-  <!--<label>Car Category:-->
-    <!--<input #CarCategory/>-->
-  <!--</label>-->
-  <!--<label>Car Description:-->
-    <!--<input #CarDescription/>-->
-  <!--</label>-->
-  <!--<label>Car CV:-->
-    <!--<input #CarCV/>-->
-  <!--</label>-->
-  <!--&lt;!&ndash; (click) passes input value to add() and then clears the input &ndash;&gt;-->
-  <!--<button (click)="add(CarName.value,CarMarca.value,CarCategory.value,CarDescription.value,CarCV.value);-->
-                    <!--CarName.value='';-->
-                    <!--CarMarca.value='';-->
-                    <!--CarCategory.value='';-->
-                    <!--CarDescription.value='';-->
-                    <!--CarCV.value=''-->
-  <!--">-->
-    <!--add-->
-  <!--</button>-->
-<!--</div>-->
+</div>

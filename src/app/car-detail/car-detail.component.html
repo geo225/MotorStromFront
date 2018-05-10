@@ -1,43 +1,48 @@
-<button mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" (click)="goBack()">Atras</button>
-<mat-card *ngIf="car">
+<div style="width: 100%;min-width: 600px;margin: auto">
+  <button mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" (click)="goBack()">
+    Atras
+  </button>
+  <mat-card *ngIf="car">
     <mat-card-title>{{car.Marca}}</mat-card-title>
     <mat-card-subtitle>{{car.name}}</mat-card-subtitle>
-  <img *ngIf="imagePath" [src]="imagePath" height="300px" width="450px"/>
-  <mat-card-content>
-    <div *ngIf="modeEdit"><span class="title">Nombre: </span>
-      <input [(ngModel)]="car.name" placeholder="car.name" required>
-    </div>
-    <div *ngIf="modeEdit"><span class="title">Marca: </span>
-      <input [(ngModel)]="car.Marca" placeholder="car.Marca" required>
-    </div>
-    <div>
-      <span class="title">Categoria: </span>
-      <span class="content">{{car.category}}</span>
+    <img *ngIf="imagePath" [src]="imagePath" height="300px" width="450px"/>
+    <mat-card-content>
+      <div *ngIf="modeEdit"><span class="title">Nombre: </span>
+        <input [(ngModel)]="car.name" placeholder="car.name" required>
+      </div>
+      <div *ngIf="modeEdit"><span class="title">Marca: </span>
+        <input [(ngModel)]="car.Marca" placeholder="car.Marca" required>
+      </div>
+      <div>
+        <span class="title">Categoria: </span>
+        <span class="content">{{car.category}}</span>
 
-    </div>
-    <div>
-      <span class="title">Año: </span>
-      <span *ngIf="!modeEdit" class="content">{{car.description}}</span>
-      <input *ngIf="modeEdit" type="number" min="1900" max="2020" [(ngModel)]="car.description" placeholder="car.description" required>
-    </div>
-    <div>
-      <span class="title">CV: </span>
-      <span *ngIf="!modeEdit" class="content">{{car.CV}}</span>
-      <input *ngIf="modeEdit" type="number" min="0" [(ngModel)]="car.CV" placeholder="car.CV" required>
-    </div>
-    <div>
-      <span class="title">Contacto: </span>
-      <span class="content">{{car.userEmail}}</span>
+      </div>
+      <div>
+        <span class="title">Año: </span>
+        <span *ngIf="!modeEdit" class="content">{{car.description}}</span>
+        <input *ngIf="modeEdit" type="number" min="1900" max="2020" [(ngModel)]="car.description"
+               placeholder="car.description" required>
+      </div>
+      <div>
+        <span class="title">CV: </span>
+        <span *ngIf="!modeEdit" class="content">{{car.CV}}</span>
+        <input *ngIf="modeEdit" type="number" min="0" [(ngModel)]="car.CV" placeholder="car.CV" required>
+      </div>
+      <div>
+        <span class="title">Contacto: </span>
+        <span class="content">{{car.userEmail}}</span>
 
-    </div>
-  </mat-card-content>
-  <mat-card-actions *ngIf="owner(car.userId)">
-    <button mat-button *ngIf="!modeEdit" (click)="edit()">Editar</button>
-    <button *ngIf="modeEdit" mat-button (click)="save()">Guardar</button>
-    <button  *ngIf="modeEdit" mat-button (click)="cancel()">Cancelar</button>
-  </mat-card-actions>
-  <!--<label>CV:-->
-  <!--<input [(ngModel)]="car.CV" placeholder="CV"/>-->
-  <!--</label>-->
-  <!--<button (click)="save()">save</button><button (click)="goBack()">go back</button>-->
-</mat-card>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="owner(car.userId)">
+      <button mat-button *ngIf="!modeEdit" (click)="edit()">Editar</button>
+      <button *ngIf="modeEdit" mat-button (click)="save()">Guardar</button>
+      <button *ngIf="modeEdit" mat-button (click)="cancel()">Cancelar</button>
+    </mat-card-actions>
+    <!--<label>CV:-->
+    <!--<input [(ngModel)]="car.CV" placeholder="CV"/>-->
+    <!--</label>-->
+    <!--<button (click)="save()">save</button><button (click)="goBack()">go back</button>-->
+  </mat-card>
+</div>

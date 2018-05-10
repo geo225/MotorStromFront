@@ -15,6 +15,26 @@ mat-card{
   max-height: 530px;
   overflow-y: auto;
 }
+.window{
+max-width: 820px;
+  margin: 8px auto;
+}
+@media only screen and (max-height: 700px) {
+  .window{
+    max-width: 820px;
+    max-height: 600px;
+    margin: 8px auto;
+    overflow-y: auto;
+  }
+}
+@media only screen and (max-height: 360px) {
+  .window{
+    max-width: 820px;
+    max-height: 340px;
+    margin: 8px auto;
+    overflow-y: auto;
+  }
+}
 /*.container-fluid{*/
   /*width: 80%;*/
   /*margin: auto;*/
