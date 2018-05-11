@@ -120,7 +120,15 @@ export class CarDetailComponent implements OnInit {
   getCar(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
-      .subscribe(data => this.car = data);
+      .subscribe(data =>
+        {
+          if(data == undefined){
+            this.toastr.error('No existe coche')
+            this.goBack();
+          }else{
+            this.car = data
+          }
+        });
   }
   owner(id){
     if(id==localStorage.getItem('user_id')){
@@ -143,6 +151,6 @@ export class CarDetailComponent implements OnInit {
 }
 @Component({
   selector: 'dialog-confirm',
-  templateUrl: '../Modal/modalConfirm.html', 
+  templateUrl: '../Modal/modalConfirm.html',
 })
 export class DialogConfirm {}
