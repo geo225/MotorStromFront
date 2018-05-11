@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from "@angular/http";
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr'
 import 'rxjs/add/operator/map';
@@ -18,14 +17,7 @@ export class UserService {
   private MotorStromURL = 'http://localhost:3001/api/v1';
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
@@ -75,9 +67,13 @@ export class UserService {
         catchError(this.handleError('getUser', []))
       );
   }
-
-  // getUserClaims(){
-  //   return  this.http.get(this.MotorStromURL+'/api/GetUserClaims');
-  // }
+  getUser(id: string): Observable<any> {
+    const url = `${this.MotorStromURL}/user/${id}`;
+    return this.http.get<User>(url).map(data => { return data.User; })
+      .pipe(
+        tap(_ => this.log(`fetched User id=${id}`)),
+        catchError(this.handleError<User>(`getUser id=${id}`))
+      );
+  }
 
 }

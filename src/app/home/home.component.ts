@@ -12,9 +12,11 @@ export class HomeComponent implements OnInit {
   userClaims: any;
 
   constructor(private router: Router, private userService: UserService, private toastr: ToastrService) { }
-
+public username
   ngOnInit() {
+    this.username=localStorage.getItem('user_username');
   }
+
 
   Logout() {
     this.toastr.success('Sesion Cerrada');

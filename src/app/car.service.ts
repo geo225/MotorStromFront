@@ -15,14 +15,8 @@ export class CarService {
   private MotorStromURL = 'http://localhost:3001/api/v1/car';
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
@@ -41,7 +35,6 @@ export class CarService {
       catchError(this.handleError<Car>(`getCar id=${id}`))
     );
   }
-  /** PUT: update the car on the server */
   updateCar (car: Car): Observable<any> {
     const url = `${this.MotorStromURL}/${car._id}`;
     return this.http.put(url, car, httpOptions).pipe(
@@ -49,14 +42,12 @@ export class CarService {
       catchError(this.handleError<any>('updateCar'))
     );
   }
-  /** POST: add a new hero to the server */
   addCar (car: Car): Observable<Car> {
     return this.http.post<Car>(this.MotorStromURL, car, httpOptions).pipe(
       tap(() => this.log(`added car`)),
       catchError(this.handleError<Car>('addCar'))
     );
   }
-  /** DELETE: delete the hero from the server */
   deleteCar (car: Car): Observable<Car> {
     const id = car._id;
     const url = `${this.MotorStromURL}/${id}`;

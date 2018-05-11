@@ -15,9 +15,12 @@ mat-card{
   max-height: 530px;
   overflow-y: auto;
 }
+a.mat-raised-button{
+  vertical-align:top;
+}
 .window{
 max-width: 820px;
-  margin: 8px auto;
+  margin: 0px auto;
 }
 @media only screen and (max-height: 700px) {
   .window{
@@ -35,8 +38,4 @@ max-width: 820px;
     overflow-y: auto;
   }
 }
-/*.container-fluid{*/
-  /*width: 80%;*/
-  /*margin: auto;*/
-/*}*/
 

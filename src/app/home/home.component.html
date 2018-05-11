@@ -5,7 +5,13 @@
         <a class="Logo">
            Motor<img src="favicon.ico" width="32px" height="32px">Strom
         </a>
-        <a mat-button style="text-align: center; width: 40px" (click)="Logout()">Salir</a>
+        <button mat-button [matMenuTriggerFor]="menu">{{username}}</button>
+        <mat-menu #menu="matMenu" xPosition="before" [overlapTrigger]="false">
+          <button mat-menu-item>Borrar Usuario</button>
+          <button mat-menu-item>Cambiar Contraseña</button>
+          <a mat-menu-item (click)="Logout()">Cerrar Sesión</a>
+        </mat-menu>
+
       </mat-toolbar-row>
     </mat-toolbar>
 

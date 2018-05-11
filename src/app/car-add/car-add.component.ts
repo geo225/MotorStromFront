@@ -47,28 +47,26 @@ export class CarAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.resetForm()
+    // this.resetForm()
   }
-  resetForm(){
-    this.car = {
-      _id:'',
-      name:'',
-      Marca:'',
-      CV:0,
-      category:'',
-      description:'',
-      img:'',
-      Car:'',
-      Cars:'',
-      userId:'',
-      userEmail:''
-    }
-  }
-
+  // resetForm(){
+  //   this.car = {
+  //     _id:'',
+  //     name:'',
+  //     Marca:'',
+  //     CV:0,
+  //     category:'',
+  //     description:'',
+  //     img:'',
+  //     Car:'',
+  //     Cars:'',
+  //     userId:'',
+  //     userEmail:''
+  //   }
+  // }
   goBack(): void {
     this.location.back();
   }
-
   onFileChange(event) {
     let reader = new FileReader();
     if (event.file) {
@@ -88,16 +86,11 @@ export class CarAddComponent implements OnInit {
     this.avatar=undefined;
     console.log(this.avatar)
   }
-
   add(name: string, Marca: string, category: string, description: string, CV: number): void {
     console.log(this.avatar)
     const img = this.avatar;
     const userId = localStorage.getItem('user_id');
     const userEmail = localStorage.getItem('user_email');
-    name = name.trim();
-    if (!name) {
-      return;
-    }
     this.carService.addCar({name, Marca, category, description, CV,img,userId,userEmail} as Car)
       .subscribe(() => {
         this.goBack();
