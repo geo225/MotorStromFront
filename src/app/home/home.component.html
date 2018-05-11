@@ -7,7 +7,7 @@
         </a>
         <button mat-button [matMenuTriggerFor]="menu">{{username}}</button>
         <mat-menu #menu="matMenu" xPosition="before" [overlapTrigger]="false">
-          <button mat-menu-item>Borrar Usuario</button>
+          <button mat-menu-item (click)="openDialog()">Borrar Usuario</button>
           <button mat-menu-item>Cambiar Contraseña</button>
           <a mat-menu-item (click)="Logout()">Cerrar Sesión</a>
         </mat-menu>

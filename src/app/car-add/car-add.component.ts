@@ -47,23 +47,7 @@ export class CarAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.resetForm()
   }
-  // resetForm(){
-  //   this.car = {
-  //     _id:'',
-  //     name:'',
-  //     Marca:'',
-  //     CV:0,
-  //     category:'',
-  //     description:'',
-  //     img:'',
-  //     Car:'',
-  //     Cars:'',
-  //     userId:'',
-  //     userEmail:''
-  //   }
-  // }
   goBack(): void {
     this.location.back();
   }

@@ -18,7 +18,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, DialogChangePassword, DialogConfirm2 } from './home/home.component';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -65,7 +65,9 @@ import { Ng2FileInputModule } from 'ng2-file-input';
 
 @NgModule({
   entryComponents:[
-    DialogConfirm
+    DialogConfirm,
+    DialogChangePassword,
+    DialogConfirm2
   ],
   declarations: [
     AppComponent,
@@ -79,7 +81,9 @@ import { Ng2FileInputModule } from 'ng2-file-input';
     HomeComponent,
     CarAddComponent,
     UserListComponent,
-    DialogConfirm
+    DialogConfirm,
+    DialogChangePassword,
+    DialogConfirm2
   ],
   imports: [
     BrowserModule,
