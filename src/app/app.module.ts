@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
-import { CarDetailComponent } from './car-detail/car-detail.component';
+import { CarDetailComponent, DialogConfirm } from './car-detail/car-detail.component';
 import {CarService} from './car.service';
 import { UserService } from './user.service';
 import { MessagesComponent } from './messages/messages.component';
@@ -18,7 +18,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, DialogChangePassword, DialogConfirm2 } from './home/home.component';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -63,8 +63,12 @@ import { UserListComponent } from './user-list/user-list.component';
 import { TrimValueAccessorModule } from 'ng-trim-value-accessor';
 import { Ng2FileInputModule } from 'ng2-file-input';
 
-
 @NgModule({
+  entryComponents:[
+    DialogConfirm,
+    DialogChangePassword,
+    DialogConfirm2
+  ],
   declarations: [
     AppComponent,
     CarsComponent,
@@ -77,6 +81,9 @@ import { Ng2FileInputModule } from 'ng2-file-input';
     HomeComponent,
     CarAddComponent,
     UserListComponent,
+    DialogConfirm,
+    DialogChangePassword,
+    DialogConfirm2
   ],
   imports: [
     BrowserModule,

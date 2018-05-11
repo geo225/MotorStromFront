@@ -5,6 +5,7 @@ import { CarService} from '../car.service';
 import { Car } from '../car';
 import { DomSanitizer } from '@angular/platform-browser';
 import {ToastrService} from "ngx-toastr";
+import {MatDialog} from '@angular/material';
 import { HttpErrorResponse } from '@angular/common/http';
 import {FormControl, Validators} from "@angular/forms";
 @Component({
@@ -68,8 +69,25 @@ export class CarDetailComponent implements OnInit {
     private carService: CarService,
     private location: Location,
     public domSanitizer: DomSanitizer,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ) { }
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogConfirm, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result==true){
+        this.delete(this.car);
+        this.toastr.success('Coche Borrado');
+        this.goBack();
+      }else{
+        this.toastr.warning('Coche no Borrado');
+      }
+    });
+  }
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
@@ -102,7 +120,15 @@ export class CarDetailComponent implements OnInit {
   getCar(): void {
     const id = this.route.snapshot.paramMap.get('name');
     this.carService.getCar(id)
-      .subscribe(data => this.car = data);
+      .subscribe(data =>
+        {
+          if(data == undefined){
+            this.toastr.error('No existe coche')
+            this.goBack();
+          }else{
+            this.car = data
+          }
+        });
   }
   owner(id){
     if(id==localStorage.getItem('user_id')){
@@ -123,3 +149,8 @@ export class CarDetailComponent implements OnInit {
 
   }
 }
+@Component({
+  selector: 'dialog-confirm',
+  templateUrl: '../Modal/modalConfirm.html',
+})
+export class DialogConfirm {}

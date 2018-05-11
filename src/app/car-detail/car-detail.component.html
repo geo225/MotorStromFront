@@ -54,6 +54,7 @@
     </mat-card-content>
     <mat-card-actions *ngIf="owner(car.userId)">
       <button mat-button *ngIf="!modeEdit" (click)="edit()">Editar</button>
+      <button mat-button *ngIf="!modeEdit" (click)="openDialog()">Borrar</button>
       <button [disabled]="name.invalid || marca.invalid || categoryControl.invalid || description.invalid || cv.invalid" *ngIf="modeEdit" mat-button (click)="save()">Guardar</button>
       <button *ngIf="modeEdit" mat-button (click)="cancel()">Cancelar</button>
     </mat-card-actions>

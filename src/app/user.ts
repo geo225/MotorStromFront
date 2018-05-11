@@ -4,4 +4,5 @@ export class User {
   displayName: string;
   password: string;
   Users: any;
+  User:any;
 }

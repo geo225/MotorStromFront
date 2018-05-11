@@ -47,6 +47,7 @@ export class SignUpComponent implements OnInit {
       password: '',
       email: '',
       Users: '',
+      User: ''
     }
   }
 
@@ -56,7 +57,8 @@ export class SignUpComponent implements OnInit {
       displayName: displayName,
       password: password,
       email: email,
-      Users: ''
+      Users: '',
+      User: ''
     }
     this.userService.registerUser(this.user)
       .subscribe((data: any) => {
