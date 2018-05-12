@@ -1,3 +1,26 @@
-<p>
-  user-list works!
-</p>
+<div style="width: 100%; min-width: 600px; overflow-x: auto">
+  <mat-form-field>
+    <label>Buscador</label>
+    <input matInput (keyup)="applyFilter($event.target.value)">
+  </mat-form-field>
+  <mat-table matSort matSortActive matSortDirection="asc" matSortDisableClear #table [dataSource]="dataSource">
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="displayName"> Nombre de Usuario</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.displayName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="email"> Email</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="_id">
+      <mat-header-cell *matHeaderCellDef style="color: white" >Borrar</mat-header-cell>
+      <mat-cell *matCellDef="let user"> <a mat-button (click)="delete(user)"><mat-icon >delete</mat-icon></a> </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row ; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="4" [pageSize]="4">
+  </mat-paginator>
+</div>

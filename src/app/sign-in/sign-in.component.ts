@@ -32,6 +32,7 @@ export class SignInComponent implements OnInit {
         localStorage.setItem('user_id',data.user._id);
         localStorage.setItem('user_email',data.user.email);
         localStorage.setItem('user_username',data.user.displayName);
+        localStorage.setItem('isAdmin',data.user.isAdmin);
         this.router.navigate(['/dashboard']);
         this.toastr.success('Usuario Autentificado con exito');
       },
