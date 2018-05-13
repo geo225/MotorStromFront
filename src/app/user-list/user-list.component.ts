@@ -3,7 +3,8 @@ import { User} from '../user';
 import { UserService } from '../user.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
-import {HttpErrorResponse} from "@angular/common/http";
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,15 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
   delete(user: User): void {
     this.userService.deleteUser(user)
-      .subscribe(() => this.getUsers()
+      .subscribe(() => {
+          this.toastr.success('Usuario borrado con Exito');
+          this.userService.getUsers()
+            .subscribe(data => {
+              this.dataSource.data = data;
+            });
+      },(err : HttpErrorResponse )=>{
+        this.toastr.error('Error al borrar Usuario');
+        }
       );
   }
   update(user: User): void {
@@ -29,13 +38,13 @@ export class UserListComponent implements OnInit, AfterViewInit {
       });
   }
 
-  displayedColumns = ['Username', 'Email'];
+  displayedColumns = ['Username', 'Email','_id'];
   dataSource= new MatTableDataSource();
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     this.dataSource.filter = filterValue;
   }
-  constructor(private userService: UserService,private router : Router) { }
+  constructor(private userService: UserService,private router : Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.userService.getUsers()

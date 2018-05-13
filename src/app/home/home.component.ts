@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material';
 import {User} from "../user";
 import {HttpErrorResponse} from "@angular/common/http";
 import { Location } from '@angular/common';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,9 @@ export class HomeComponent implements OnInit {
               private location: Location,
   ) { }
 public username
+  public isAdmin
   ngOnInit() {
+    this.isAdmin=localStorage.getItem('isAdmin');
     this.username=localStorage.getItem('user_username');
     this.getUser(localStorage.getItem('user_id'));
   }
@@ -44,16 +47,15 @@ public username
   }
     openChangePassword(){
       const dialogRef = this.dialog.open(DialogChangePassword, {
-        width: '250px',
+        width: '270px',
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result == true) {
-          this.delete(this.user);
-          this.toastr.success('Coche Borrado');
-          this.goBack();
+        if (result != '' && result != undefined ) {
+          this.user.password = result;
+          this.update(this.user);
         } else {
-          this.toastr.warning('Coche no Borrado');
+          console.log(result)
         }
       });
     }
@@ -63,6 +65,7 @@ public username
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_username');
     localStorage.removeItem('user_email');
+    localStorage.removeItem('isAdmin');
     this.router.navigate(['/login']);
 
   }
@@ -74,6 +77,7 @@ public username
         localStorage.removeItem('user_id');
         localStorage.removeItem('user_username');
         localStorage.removeItem('user_email');
+        localStorage.removeItem('isAdmin');
         this.router.navigate(['/login']);
         },(err => {
           console.error(err);
@@ -84,7 +88,9 @@ public username
   update(user: User): void {
     this.userService.updateUser(user)
       .subscribe(() => {
+        this.toastr.success('Contraseña Cambiada');
       }, (err : HttpErrorResponse)=>{
+        this.toastr.error('Error al cambiar la contraseña');
       });
   }
   goBack(): void {
@@ -97,7 +103,15 @@ public username
   selector: 'dialog-change-password',
   templateUrl: '../Modal/modalChangePassword.html',
 })
-export class DialogChangePassword {}
+export class DialogChangePassword {
+  password = new FormControl('',[Validators.minLength(6), Validators.required]);
+  password2 = new FormControl('',[]);
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'El campo es Requerido' :
+      this.password.hasError( 'minlength') ? 'El campo tiene que tener 6 caracteres como minimo' :
+        '';
+  };
+}
     @Component({
       selector: 'dialog-confirm',
       templateUrl: '../Modal/modalConfirm.html',
