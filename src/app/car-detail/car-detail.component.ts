@@ -80,7 +80,6 @@ export class CarDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result==true){
         this.delete(this.car);
-        this.toastr.success('Coche Borrado');
         this.goBack();
       }else{
         this.toastr.warning('Coche no Borrado');

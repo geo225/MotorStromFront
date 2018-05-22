@@ -1,7 +1,6 @@
 <div style="max-width: 820px; margin: 8px auto">
   <button mat-raised-button color="primary" style="text-align: center; width: 40px;float: right" (click)="goBack()">Atras</button>
-  <form class="example-container"
-        (ngSubmit)="add(Name.value,Marca.value,categoryControl.value,description.value,CV.value)">
+  <form class="example-container">
     <h1 class="shadow" style="text-align: center"> Añadir Coche</h1>
     <mat-form-field>
       <input matInput name="name" placeholder="Modelo Coche" #Name [formControl]="name" required>
@@ -32,7 +31,7 @@
                       (onAdded)="onFileChange($event)" (onRemoved)="resetAvatar()"
       ></ng2-file-input>
       <button [disabled]="name.invalid || marca.invalid || categoryControl.invalid || description.invalid || cv.invalid" mat-raised-button
-            style="background-color: lightgrey; height: 40px;" type="submit">Añadir
+            style="background-color: lightgrey; height: 40px;" type="submit" (click)="add(Name.value,Marca.value,categoryControl.value,description.value,CV.value)">Añadir
     </button>
   </form>
 </div>
